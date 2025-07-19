@@ -1,0 +1,18 @@
+.textStyle {
+    text-decoration: none;
+    color: white;
+    background-color: #567b9c;
+    font-size: larger;
+    font-weight: 600;
+}
+.textStyle:hover {
+    color: yellow;
+}
+.navRowHeight{
+    height: 40px;
+}
+.mainHeading {
+    color: white;
+    background-color: #27445D;
+}
+

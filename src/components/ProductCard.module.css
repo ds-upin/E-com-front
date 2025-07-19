@@ -1,0 +1,28 @@
+.cardStyle {
+  padding: 20px;
+  background-color: #27445D;
+  border-radius: 10px;
+  margin: 25px;
+  text-align: center;
+  height: 410px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.imageStyle {
+  width: fit-content;
+}
+
+.buttonStyle {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+    background-color: #82dbb8;
+    font-weight: 500;
+}
+.buttonStyle:hover {
+    background-color: rgb(173, 223, 243);
+    
+}

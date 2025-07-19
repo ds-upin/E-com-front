@@ -1,0 +1,27 @@
+.authContainer {
+  background-color: #ffdee8;
+  color: black;
+}
+
+.authCard {
+  width: 30%;
+  max-width: 400px;
+  border-radius: 12px;
+  background-color: #27445D;
+  color: white;
+  height:630px;
+  width: 400px;
+  padding: 20px;
+}
+.headline{
+  font-size: larger;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.wrap{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display:flex;
+  flex-direction: column;
+}
+
