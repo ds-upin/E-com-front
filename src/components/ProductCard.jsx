@@ -1,4 +1,4 @@
-import styles from './ProductCard.module.css';
+import styles from '../stylesheets/ProductCard.module.css';
 import image from '../assets/download.jpg';
 
 const ProductCard = (props) => {

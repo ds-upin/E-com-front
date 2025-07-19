@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
+import { ModeProvider } from "../context/Mode";
 const Home = () => {
 
     const product = [{name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:0},
@@ -26,6 +27,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+
     </>);
 }
 export default Home;

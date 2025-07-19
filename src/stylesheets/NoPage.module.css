@@ -1,0 +1,25 @@
+.noPage {
+  text-align: center;
+  padding: 100px 20px;
+  font-family: Arial, sans-serif;
+}
+body{
+    background-color: #ffdee8;
+}
+.noPage h1 {
+  font-size: 96px;
+  margin-bottom: 20px;
+}
+
+.noPage p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.noPage a {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}

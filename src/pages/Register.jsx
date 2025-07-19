@@ -1,4 +1,4 @@
-import styles from './Register.module.css';
+import styles from '../stylesheets/Register.module.css';
 import { Link } from 'react-router-dom';
 
 const Register = () => {

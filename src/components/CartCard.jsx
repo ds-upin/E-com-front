@@ -1,7 +1,8 @@
 import image from '../assets/download.jpg';
-import styles from './CartCard.module.css';
+import styles from '../stylesheets/CartCard.module.css';
 
-const CartCard = () => {
+const CartCard = (props) => {
+  const {name, slug ,price, description} = props;
      return (
         <>
         <div className={`container ${styles.mainCard}`}>
@@ -10,9 +11,9 @@ const CartCard = () => {
                   <img src={image} height="250px"/>
             </div>
             <div className="col-md-6 d-flex flex-column align-items-center justify-content-center">
-            <h4 className="text-white">Product Name</h4>
-            <p className="text-light">Slug: product-slug</p>
-            <h5 className="text-white">Price:Rs.99.00</h5>
+            <h4 className="text-white">{name}</h4>
+            <p className="text-light">Slug: {slug}</p>
+            <h5 className="text-white">Price:Rs.{price}</h5>
 
             <div className={`${styles.descriptionBox} text-light mb-3`}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
@@ -24,7 +25,7 @@ const CartCard = () => {
             </div>
 
             <div className="my-2">
-              <button className="btn btn-success">Buy: Rs.9999.00</button>
+              <button className="btn btn-success">Buy: Rs.{price}</button>
             </div>
 
             <div className="d-flex align-items-center">
