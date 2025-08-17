@@ -1,16 +1,24 @@
 import Navbar from "../components/Navbar";
 import CartCard from "../components/CartCard";
+import { useEffect, useState } from "react";
+import { getCart } from "../services/cart.api";
 
 const Cart = () => {
-    const cart = [{name:"Product Name",slug:"product-slug",sellingPrice:2000,id:1,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:2,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:3,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:4,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:5,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:6,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:7,description:"lorem"},
-        {name:"Product Name",slug:"product-slug",sellingPrice:2000,id:8,description:"lorem"},
-    ];
+    const [cart, setCart] = useState([]);
+    const cartItem = async () => {
+        try{
+            const res = await getCart();
+            if(res.status===200){
+                setCart(res.data.items||[]);
+            }
+        }catch(error){
+            console.log('Network Error',error);
+        }
+    }
+    useEffect(()=>{
+        cartItem();
+    },[]);
+    
     
     return(<>
     <div className="container-fluid">
@@ -22,7 +30,14 @@ const Cart = () => {
             <div className="d-flex flex-wrap">
                 {
                     cart.map((item)=>{
-                        return <CartCard name={item.name} slug={item.slug} description={item.description} price={item.sellingPrice} key={item.id}/>;
+                        return <CartCard name={item.product.name}
+                        id={item.product._id} 
+                        image={item.product.image[0].url} 
+                        slug={item.product.slug} 
+                        description={item.product.description} 
+                        price={item.product.sellingPrice} 
+                        quantity={item.quantity}
+                        key={item._id}/>;
                     })
                 }
             </div>

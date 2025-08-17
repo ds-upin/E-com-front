@@ -1,13 +1,24 @@
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
-import { ModeProvider } from "../context/Mode";
+import { getAllProduct } from "../services/product.api";
+import { useState, useEffect } from "react";
+import { AddItemCart } from "../services/cart.api";
+
 const Home = () => {
 
-    const product = [{name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:0},
-        {name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:1},
-        {name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:2},
-        {name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:3},
-        {name:"Samsung",slug:"Samsung Phone", sellingPrice:2000, id:4}];
+    const [product,setProduct] = useState([]);
+    const getProduct = async() =>{
+        try{
+            const res = await getAllProduct();
+            //console.log(res);
+            setProduct(res);
+        }catch(err){
+            console.log("network error",err);
+        }
+    }
+      useEffect(() => {
+        getProduct();
+      }, []);
 
     return(<>
         <div className="container-fluid p-0">
@@ -19,8 +30,8 @@ const Home = () => {
                 <div className="row d-flex align-items-center justify-content-center">
                 {product.map((item) => {
                         return (
-                        <div className="col-md-4 " key={item.id}>
-                            <ProductCard name={item.name} slug={item.slug} price={item.sellingPrice} />
+                        <div className="col-md-4 " key={item._id}>
+                            <ProductCard name={item.name} slug={item.slug} id={item._id} price={item.sellingPrice} image={item.image} />
                         </div>
                         )
                 })}
