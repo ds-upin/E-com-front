@@ -35,31 +35,35 @@ export const AddItemCart = async (data) => {
 
 export const UpdateQuantity = async (data) => {
     const response = await fetch(`${baseurl}/api/cart/`,{
-        method: "PUT",
-        header: {
+        method: "PATCH",
+        headers: {
             'Content-Type':'application/json',
         },
+        credentials: "include",
         body: JSON.stringify(data)
     });
-    return response.json();
+    console.log(response);
+    return {status:response.status};
 }
 
 export const deleteItemCart = async (id) => {
     const response = await fetch(`${baseurl}/api/cart/${id}`,{
         method: "DELETE",
-        header: {
+        headers: {
             'Content-Type':'application/json',
-        }
+        },
+        credentials: 'include',
     });
-    return response.json();
+    return {status:response.status,data:response.json()};
 }
 
 export const clearItemCart = async () => {
     const response = await fetch(`${baseurl}/api/cart/`,{
         method: "DELETE",
-        header: {
+        headers: {
             'Content-Type':'application/json',
-        }
+        },
+        credentials: "include",
     });
     return response.json();
 }
