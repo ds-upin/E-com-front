@@ -1,18 +1,31 @@
 import Navbar from "../components/Navbar";
 import CartCard from "../components/CartCard";
-import { useEffect, useState,useContext } from "react";
-import { getCart, deleteItemCart,UpdateQuantity } from "../services/cart.api";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { getCart, deleteItemCart, UpdateQuantity } from "../services/cart.api";
+import { placeOrder } from "../services/order.api";
 import { AuthContext } from "../context/Auth";
+import { OrderContext } from "../context/Order";
 
 const Cart = () => {
-    const {auth,  setAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { auth, setAuth } = useContext(AuthContext);
     const [cart, setCart] = useState([]);
+    const [allCartOrder, setAllCartOrder] = useState([])
+    const { order, setOrder } = useContext(OrderContext);
+
     const cartItem = async () => {
         try {
             const res = await getCart();
             if (res.status === 200) {
                 setCart(res.data);
-                console.log(res.data)
+                const arr = []
+                for(const iitem of res.data.items){
+                    //console.log(iitem)
+                    arr.push({"productId":iitem.product._id,"quantity":iitem.quantity});
+                }
+                setAllCartOrder(arr);
+                //console.log(res.data)
             }
         } catch (error) {
             console.log('Network Error', error);
@@ -21,15 +34,37 @@ const Cart = () => {
     useEffect(() => {
         cartItem();
     }, [setAuth]);
-    const upgradeQuantity = async (data)=>{
-        try{
+    const OrderProduct = async (data) => {
+        try {
+            const res = await placeOrder(data);
+            console.log(res);
+            if (res.status === 201) {
+                alert("Ordered")
+                setOrder(res.data.orders);
+                cartItem();
+                
+            }else if(res.status===401){
+                alert("Please Login");
+                navigate("/login");
+            }
+            else {
+                //console.log(error);
+                alert("Error Occured while ordering, Cannot order");
+            }
+        }
+        catch (error) {
+            console.log("Error", error);
+        }
+    }
+    const upgradeQuantity = async (data) => {
+        try {
             const res = await UpdateQuantity(data);
             console.log(res);
-            if(res.status==200){
+            if (res.status == 200) {
                 cartItem();
             }
-        } catch(error){
-            console.log("Error",error);
+        } catch (error) {
+            console.log("Error", error);
         }
     }
     const removeItem = async (id) => {
@@ -67,13 +102,14 @@ const Cart = () => {
                                     key={item.product._id}
                                     upgradeQuantity={upgradeQuantity}
                                     removeItem={removeItem}
+                                    OrderProduct={OrderProduct}
                                 />
                             ))
                         ) : (<p>Your cart is empty.</p>)
                     }
                 </div>
 
-                <div className="row d-flex align-items-center" style={{ height: "50px", backgroundColor: '#27445D', color: 'white' }}>Rs. {cart.total}</div>
+                <div className="row d-flex align-items-center" style={{ height: "50px", backgroundColor: '#27445D', color: 'white' }}>Rs. {cart.total}<button className="btn btn-success" onClick={()=>{OrderProduct({"items":allCartOrder,"shippingAddress":auth.address,"paymentMethod":"Cash"})}}>Buy all products in cart</button></div>
             </div>
         </div>
     </>);

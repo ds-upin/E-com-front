@@ -1,6 +1,6 @@
 const baseurl = 'http://localhost:4000';
 
-export const getOrders = async () =>{
+export const getAdminOrders = async () =>{
     const response = await fetch(`${baseurl}/api/admin-panel/orders`);
     return await response.json();
 }

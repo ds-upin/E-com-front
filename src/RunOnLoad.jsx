@@ -15,6 +15,7 @@ const RunOnLoad = () => {
         const res = await fetchUserData();
 
         if (res.status === 200) {
+          console.log(res.user)
           setAuth(res.user);
         } else {
           console.warn("Not logged in:", res.message);

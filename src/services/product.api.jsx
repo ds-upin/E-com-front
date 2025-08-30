@@ -1,7 +1,7 @@
 const baseurl = 'http://localhost:4000';
 
 export const getAllProduct = async () => {
-    const response = await fetch(`${baseurl}/api/products/`);
+    const response = await fetch(`${baseurl}/api/products/`,{credentials:"include"});
     let result;
     try {
       result = await response.json();
@@ -16,7 +16,7 @@ export const getAllProduct = async () => {
 };
 
 export const getProductDetails = async (id) => {
-    const response = await fetch(`${baseurl}/api/products/${id}`);
+    const response = await fetch(`${baseurl}/api/products/${id}`,{credentials:"include"});
     return await response.json();
 };
 
@@ -25,6 +25,7 @@ export const createProduct = async (data) => {
   const response = await fetch(`${baseurl}/api/products/`, {
     method: 'POST',
     body: data,
+    credentials: "include"
   });
 
   let result = null;
@@ -47,6 +48,7 @@ export const updateProduct = async (id, data) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials:"include",
     body: JSON.stringify(data),
   });
 
@@ -76,7 +78,7 @@ export const deleteProduct = async (id) => {
 
 
 export const getAdminAllProduct = async () => {
-    const response = await fetch(`${baseurl}/api/admin-panel/products`);
+    const response = await fetch(`${baseurl}/api/admin-panel/products`,{credentials:"include"});
     let result;
     try {
       result = await response.json();

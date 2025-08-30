@@ -3,12 +3,17 @@ import AdminNavbar from "../adminComponent/AdminNavbar";
 import AdminProductTable from "../adminComponent/AdminProductTable";
 import { getAdminAllProduct } from "../services/product.api";
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
+  const navigate = useNavigate();
   const [product,setProduct] = useState([]);
   const getProduct = async() =>{
     try{
       const res = await getAdminAllProduct();
+      if(res.status===401){
+        navigate("/");
+      }
       setProduct(res);
     }catch(err){
       console.log("network error",err);

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginApi } from '../services/auth.api';
 import { useContext, useRef } from 'react';
 import {AuthContext} from '../context/Auth';
+import { fetchUserData } from '../services/auth.api';
 
 const Login = () => {
   const {auth, setAuth} = useContext(AuthContext);
@@ -15,12 +16,26 @@ const Login = () => {
       email: emailRef.current.value.trim(),
       password: passRef.current.value,
     };
+    const loadUser = async () => {
+          try {
+            const res = await fetchUserData();
+    
+            if (res.status === 200) {
+              console.log(res.user)
+              setAuth(res.user);
+            } else {
+              console.warn("Not logged in:", res.message);
+            }
+          } catch (err) {
+            console.error("Failed to fetch user:", err);
+          }
+        };
 
     try {
       const res = await loginApi(data);
       if (res.status === 200) {
         alert("Login successful!");
-        setAuth({id:res.id, name: res.name,address:res.address,pincode:res.pincode||"",email:res.email,role:res.role});
+        loadUser();
         navigate("/"); 
       } else {
         alert(res.err?.message || "Login failed");

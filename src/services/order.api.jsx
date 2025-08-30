@@ -3,28 +3,36 @@ const baseurl = 'http://localhost:4000';
 export const placeOrder = async (data) => {
     const response = await fetch(`${baseurl}/api/orders/`,{
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type':'application/json',
         },
+        credentials: "include",
         body: JSON.stringify(data),
     });
 
-    return await response.json();
+    return await {status:response.status,data:response.json()};
 };
 
 export const cancelOrder = async (id) => {
     const response = await fetch(`${baseurl}/api/orders/${id}`,{
         method: 'PUT',
-        header: {
+        headers: {
             'Content-Type':'application/json',
         },
+        credentials: "include",
     });
     return await response.json();
 };
 
 export const getOrder = async () => {
-    const response = await fetch(`${baseurl}/api/orders/`);
-    return await response.json();
+    const response = await fetch(`${baseurl}/api/orders/`,{
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json',
+        },
+        credentials: "include",
+    });
+    return await {status:response.status, data:response.json()};
 };
 
 export const getSpecificOrder = async (id) => {

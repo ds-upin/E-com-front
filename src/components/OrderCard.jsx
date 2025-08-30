@@ -1,24 +1,61 @@
+import { cancelOrder } from "../services/order.api";
 
+const OrderCard = ({ order, GetOrder }) => {
+    const CancelOrder = async () => {
+        try {
+            const res = await cancelOrder(order._id);
+            if(res.status===200){
+                alert("Order Cancelled")
+            }
+            GetOrder();
+        } catch (err) {
+            console.log("Cancel Error:", err);
+        }
+    };
 
-const OrderCard = (props) => {
-    const {name, slug, quantity, price, date, status} = props;
-  return (
-      <div className="card h-40" style={{color:'white', backgroundColor:'#27445D',margin:'5px'}}>
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <h6 className="card-subtitle mb-2">-{slug}</h6>
-          <div className="row mb-2">
-            <div className="col-6">Quantity: {quantity}</div>
-            <div className="col-6">Total Price: Rs.{price}</div>
-          </div>
-          <div className="row">
-            <div className="col-6">Date: {date}</div>
-            <div className="col-6">Status: {status}</div>
-          </div>
-          <button className='btn btn-danger'>Cancel Order</button>
+    return (
+        <div
+            className="card"
+            style={{
+                color: 'white',
+                backgroundColor: '#27445D',
+                margin: '5px',
+                height: 'auto'
+            }}
+        >
+            <div className="card-body">
+                <h5 className="card-title">Order ID: {order._id}</h5>
+
+                {order.items.map((item, index) => (
+                    <div key={index} className="mb-2">
+                        <h6>{item.product.name} <small>- {item.product.slug}</small></h6>
+                        <div className="row">
+                            <div className="col-6">Quantity: {item.quantity}</div>
+                            <div className="col-6">Price: Rs.{item.price * item.quantity}</div>
+                        </div>
+                        <hr style={{ borderColor: 'rgba(255,255,255,0.2)' }} />
+                    </div>
+                ))}
+
+                <div className="row">
+                    <div className="col-6">Date: {new Date(order.createdAt).toLocaleDateString('en-GB')}</div>
+                    <div className="col-6">Status: {order.status}</div>
+                </div>
+
+                <div className="mt-3">
+                    <strong>Total: Rs.{order.totalAmount}</strong>
+                </div>
+
+                <button
+                    className="btn btn-danger mt-2"
+                    onClick={CancelOrder}
+                    disabled={["cancelled", "delivered", "shipped"].includes(order.status)}
+                >
+                    Cancel Order
+                </button>
+            </div>
         </div>
-      </div>
-    
-  );
+    );
 };
+
 export default OrderCard;
