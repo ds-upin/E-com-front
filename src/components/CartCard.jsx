@@ -4,12 +4,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/Auth';
 
 const CartCard = (props) => {
-    const {auth,setAuth} = useContext(AuthContext);
-    const { name, id, image, slug, price, description, quantity, removeItem, upgradeQuantity,OrderProduct } = props;
-    const increament =async () => {
+    const { auth, setAuth } = useContext(AuthContext);
+    const { name, id, image, slug, price, description, quantity, removeItem, upgradeQuantity, OrderProduct } = props;
+    const increament = async () => {
         await upgradeQuantity({ "productId": id, "quantity": quantity + 1 })
     }
-    const decrement =async () => {
+    const decrement = async () => {
         await upgradeQuantity({ "productId": id, "quantity": quantity - 1 })
     }
     return (
@@ -29,7 +29,7 @@ const CartCard = (props) => {
                         </div>
 
                         <div className="my-2">
-                            <button className="btn btn-success" onClick={()=>{OrderProduct({"items":[{"productId":id,"quantity":quantity}],"shippingAddress":auth.address,"paymentMethod":"Not specified"})}}>Buy: Rs.{price}</button>
+                            <button className="btn btn-success" onClick={() => { OrderProduct({ "items": [{ "productId": id, "quantity": quantity }], "shippingAddress": auth.address, "paymentMethod": "Not specified" }) }}>Buy: Rs.{price}</button>
                             <button className="btn btn-danger ms-2" onClick={() => { removeItem(id) }}>Remove</button>
                         </div>
 

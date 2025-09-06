@@ -3,7 +3,7 @@ const baseurl = 'http://localhost:4000';
 export const getCart = async () => {
     const response = await fetch(`${baseurl}/api/cart/`, {
         method: 'GET',
-        credentials: 'include', 
+        credentials: 'include',
     });
 
     const data = await response.json();
@@ -16,52 +16,52 @@ export const getCart = async () => {
 };
 
 export const AddItemCart = async (data) => {
-  const response = await fetch(`${baseurl}/api/cart/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include", 
-    body: JSON.stringify(data),
-  });
+    const response = await fetch(`${baseurl}/api/cart/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(data),
+    });
 
-  const result = await response.json();
-  return {
-    ...result,
-    status: response.status,
-  };
+    const result = await response.json();
+    return {
+        ...result,
+        status: response.status,
+    };
 };
 
 
 export const UpdateQuantity = async (data) => {
-    const response = await fetch(`${baseurl}/api/cart/`,{
+    const response = await fetch(`${baseurl}/api/cart/`, {
         method: "PATCH",
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         credentials: "include",
         body: JSON.stringify(data)
     });
     console.log(response);
-    return {status:response.status};
+    return { status: response.status };
 }
 
 export const deleteItemCart = async (id) => {
-    const response = await fetch(`${baseurl}/api/cart/${id}`,{
+    const response = await fetch(`${baseurl}/api/cart/${id}`, {
         method: "DELETE",
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         credentials: 'include',
     });
-    return {status:response.status,data:response.json()};
+    return { status: response.status, data: response.json() };
 }
 
 export const clearItemCart = async () => {
-    const response = await fetch(`${baseurl}/api/cart/`,{
+    const response = await fetch(`${baseurl}/api/cart/`, {
         method: "DELETE",
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         credentials: "include",
     });

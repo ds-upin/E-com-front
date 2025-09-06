@@ -1,16 +1,16 @@
 const baseurl = "http://localhost:4000";
 
 export const updateUserProfile = async (data) => {
-    const response = await fetch(`${baseurl}/api/users/me`,{
-        method:'PUT',
+    const response = await fetch(`${baseurl}/api/users/me`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        credentials: 'include', 
+        credentials: 'include',
         body: JSON.stringify(data)
     });
-    
-    const datas =  await response.json();
+
+    const datas = await response.json();
     return {
         status: response.status,
         data: datas,
@@ -18,7 +18,7 @@ export const updateUserProfile = async (data) => {
 }
 
 export const deleteAccount = async () => {
-    const response = await fetch(`${baseurl}/api/users/me`,{
+    const response = await fetch(`${baseurl}/api/users/me`, {
         method: 'DELETE',
     });
     return await response.json();

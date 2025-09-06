@@ -26,7 +26,7 @@ export const loginApi = async (data) => {
 };
 
 export const verifyEmail = async ({ email, code }) => {
-    const res = await fetch('http://localhost:4000/api/auth/verify-email', {
+    const res = await fetch(`${apiurl}/api/auth/verify-email`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

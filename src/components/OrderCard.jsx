@@ -4,7 +4,7 @@ const OrderCard = ({ order, GetOrder }) => {
     const CancelOrder = async () => {
         try {
             const res = await cancelOrder(order._id);
-            if(res.status===200){
+            if (res.status === 200) {
                 alert("Order Cancelled")
             }
             GetOrder();

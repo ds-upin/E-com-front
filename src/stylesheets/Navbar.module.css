@@ -5,14 +5,16 @@
     font-size: larger;
     font-weight: 600;
 }
+
 .textStyle:hover {
     color: yellow;
 }
-.navRowHeight{
+
+.navRowHeight {
     height: 40px;
 }
+
 .mainHeading {
     color: white;
     background-color: #27445D;
 }
-

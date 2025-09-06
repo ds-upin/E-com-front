@@ -1,31 +1,30 @@
 .mainCard {
-  width: 600px;
-  padding:20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  background-color: #27445D;
-  margin-bottom: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+    width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #27445D;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .imageWrapper {
-    height:250px;
-    margin-top:10px;
+    height: 250px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .descriptionBox {
-  max-height: 100px;
-  overflow-y: auto;
-  padding-right: 10px;
-  scrollbar-width: thin; 
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
 }
 
 .descriptionBox::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
 }
-
-

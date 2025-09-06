@@ -4,7 +4,7 @@ const PendingOrdersTable = (props) => {
     const { order, setOrder } = props;
     const editOrder = async ({ id, status }) => {
         try {
-            console.log(id,status);
+            console.log(id, status);
             const res = await editOrderStatus({ id, status });
             if (res.status == 200) {
                 alert("Updated status for", id);
@@ -42,7 +42,7 @@ const PendingOrdersTable = (props) => {
                                 <td>Rs.{o.totalAmount}/-</td>
                                 <td>2025-07-2{2}</td>
                                 <td>
-                                    <select defaultValue={o.status} onChange={(e) => editOrder({id:o._id, status:e.target.value})}>
+                                    <select defaultValue={o.status} onChange={(e) => editOrder({ id: o._id, status: e.target.value })}>
                                         <option value="pending">Pending</option>
                                         <option value="paid">Paid</option>
                                         <option value="shipped">Shipped</option>

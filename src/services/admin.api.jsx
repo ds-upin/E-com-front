@@ -12,11 +12,11 @@ export const getAdminOrders = async () => {
     return { status: response.status, data: data };
 }
 
-export const getOrderByStatus = async ({status}) => {
+export const getOrderByStatus = async ({ status }) => {
     //console.log(status);
-    const response = await fetch(`${baseurl}/api/admin-panel/orders/${status}`, { credentials: "include",headers:{"Content-Type":"application/json"}});
-    const data= await response.json();
-    return {data, status:response.status};
+    const response = await fetch(`${baseurl}/api/admin-panel/orders/${status}`, { credentials: "include", headers: { "Content-Type": "application/json" } });
+    const data = await response.json();
+    return { data, status: response.status };
 }
 
 export const editOrderStatus = async ({ id, status }) => {

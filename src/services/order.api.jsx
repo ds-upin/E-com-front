@@ -1,23 +1,23 @@
 const baseurl = 'http://localhost:4000';
 
 export const placeOrder = async (data) => {
-    const response = await fetch(`${baseurl}/api/orders/`,{
+    const response = await fetch(`${baseurl}/api/orders/`, {
         method: 'POST',
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         credentials: "include",
         body: JSON.stringify(data),
     });
 
-    return await {status:response.status,data:response.json()};
+    return await { status: response.status, data: response.json() };
 };
 
 export const cancelOrder = async (id) => {
-    const response = await fetch(`${baseurl}/api/orders/${id}`,{
+    const response = await fetch(`${baseurl}/api/orders/${id}`, {
         method: 'PUT',
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         credentials: "include",
     });
@@ -25,14 +25,14 @@ export const cancelOrder = async (id) => {
 };
 
 export const getOrder = async () => {
-    const response = await fetch(`${baseurl}/api/orders/`,{
+    const response = await fetch(`${baseurl}/api/orders/`, {
         method: 'GET',
-        headers:{
-            'Content-Type':'application/json',
+        headers: {
+            'Content-Type': 'application/json',
         },
         credentials: "include",
     });
-    return await {status:response.status, data:response.json()};
+    return await { status: response.status, data: response.json() };
 };
 
 export const getSpecificOrder = async (id) => {
