@@ -1,4 +1,4 @@
-const apiurl = 'http://localhost:4000';
+const apiurl = 'https://e-com-server-eta.vercel.app';
 
 export const loginApi = async (data) => {
     try {

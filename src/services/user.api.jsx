@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:4000";
+const baseurl = "https://e-com-server-eta.vercel.app";
 
 export const updateUserProfile = async (data) => {
     const response = await fetch(`${baseurl}/api/users/me`, {
