@@ -1,4 +1,4 @@
-const apiurl = 'https://e-com-server-eta.vercel.app';
+const apiurl = 'https://e-com-server-omega.vercel.app';
 
 export const loginApi = async (data) => {
     try {

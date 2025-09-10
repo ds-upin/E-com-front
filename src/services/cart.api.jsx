@@ -1,4 +1,4 @@
-const baseurl = 'https://e-com-server-eta.vercel.app';
+const baseurl = 'https://e-com-server-omega.vercel.app';
 
 export const getCart = async () => {
     const response = await fetch(`${baseurl}/api/cart/`, {
