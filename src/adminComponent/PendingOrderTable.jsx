@@ -4,7 +4,7 @@ const PendingOrdersTable = (props) => {
     const { order, setOrder } = props;
     const editOrder = async ({ id, status }) => {
         try {
-            console.log(id, status);
+            //console.log(id, status);
             const res = await editOrderStatus({ id, status });
             if (res.status == 200) {
                 alert("Updated status for", id);

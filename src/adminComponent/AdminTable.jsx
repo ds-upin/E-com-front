@@ -26,7 +26,7 @@ const AdminTable = (props) => {
 
         try {
             const res = await updateProduct(i._id, updatedData);
-            console.log("Updated successfully", res);
+            //console.log("Updated successfully", res);
             alert("Product updated!");
 
         } catch (err) {

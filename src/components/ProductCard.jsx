@@ -13,7 +13,7 @@ const ProductCard = (props) => {
             const res = await AddItemCart(data);
 
             if (res.status === 200 || res.success) {
-                console.log("Item added to cart:", res);
+                //console.log("Item added to cart:", res);
                 setIncart(true);
             } else {
                 console.warn("Failed to add item:", res.message || res);

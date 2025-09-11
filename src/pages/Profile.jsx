@@ -30,7 +30,7 @@ const Products = (props) => {
         try {
             const res = await getOrder();
             const orders = await res.data;
-            console.log(orders)
+            //console.log(orders)
             setOrder(orders);
         } catch (error) {
             console.log(error);

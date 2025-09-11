@@ -42,7 +42,7 @@ export const UpdateQuantity = async (data) => {
         credentials: "include",
         body: JSON.stringify(data)
     });
-    console.log(response);
+    //console.log(response);
     return { status: response.status };
 }
 
