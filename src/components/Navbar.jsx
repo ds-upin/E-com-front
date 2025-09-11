@@ -40,7 +40,7 @@ const Navbar = () => {
                 <button to="/login" style={{ borderWidth: '0px' }} onClick={handeLogout} className={`col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>{auth.email === '' ? 'Login' : 'Logout'}</button>
                 <Link to="/profile" className={`col-md-1 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Profile</Link>
                 <button style={{ borderWidth: '0px' }} className={`col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`} onClick={toggleMode}>{mode === 'light' ? 'Dark Mode' : 'Light Mode'}</button>
-                <Link to="/admin-panel" className={`col-md-1 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Admin</Link>
+                {auth.role=='admin'?<Link to="/admin-panel" className={`col-md-1 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Admin</Link>:null}
             </div>
         </div>
     );
