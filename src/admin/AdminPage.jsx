@@ -15,7 +15,7 @@ const AdminPage = () => {
         try {
             const res = await getOrderByStatus({ status });
             if (res.status == 200) {
-                console.log(res.data);
+                //console.log(res.data);
                 setOrder(res.data);
             }
         } catch (error) {
@@ -27,7 +27,7 @@ const AdminPage = () => {
             const res = await getAdminOrders();
             if (res.status === 200) {
                 setOrder(res.data);
-                console.log("hh", typeof res, res);
+                //console.log("hh", typeof res, res);
 
             } else if (res.status === 401) {
                 navigate("/");

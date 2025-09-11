@@ -37,7 +37,7 @@ const Cart = () => {
     const OrderProduct = async (data) => {
         try {
             const res = await placeOrder(data);
-            console.log(res);
+            //console.log(res);
             if (res.status === 201) {
                 alert("Ordered")
                 setOrder(res.data.orders);
@@ -59,7 +59,7 @@ const Cart = () => {
     const upgradeQuantity = async (data) => {
         try {
             const res = await UpdateQuantity(data);
-            console.log(res);
+            //console.log(res);
             if (res.status == 200) {
                 cartItem();
             }

@@ -18,3 +18,13 @@
     color: white;
     background-color: #27445D;
 }
+
+@media (max-width: 576px) {
+  .textStyle {
+    font-size: 0.8rem; 
+    padding: 0.25rem 0; 
+  }
+  .navRowHeight {
+    min-height: 40px; 
+  }
+}
