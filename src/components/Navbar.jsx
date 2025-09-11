@@ -34,9 +34,7 @@ const Navbar = () => {
             </div>
 
             <div className={`row p-0 ${styles.navRowHeight} flex-wrap`}>
-                <Link to="/" className={`col-6 col-md-3 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Home</Link>
-                {/* <div className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Kids</div>
-                <div className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Ladies</div> */}
+                <Link to="/" className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Home</Link>
                 <Link to="/cart" className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Cart</Link>
                 <button
                     onClick={handeLogout}
@@ -48,10 +46,17 @@ const Navbar = () => {
                 <Link to="/profile" className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}>Profile</Link>
                 <button
                     onClick={toggleMode}
-                    className={`col-6 col-md-3 d-flex justify-content-center align-items-center ${styles.textStyle}`}
+                    className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}
                     style={{ borderWidth: 0 }}
                 >
                     {mode === 'light' ? 'Dark Mode' : 'Light Mode'}
+                </button>
+                <button
+                    
+                    className={`col-6 col-md-2 d-flex justify-content-center align-items-center ${styles.textStyle}`}
+                    style={{ borderWidth: 0 }}
+                >
+                   
                 </button>
                 {auth.role === 'admin' && (
                     <Link to="/admin-panel" className={`col-6 col-md-1 d-flex justify-content-center align-items-center ${styles.textStyle}`}>
