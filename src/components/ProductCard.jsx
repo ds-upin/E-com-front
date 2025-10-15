@@ -15,6 +15,8 @@ const ProductCard = (props) => {
             if (res.status === 200 || res.success) {
                 //console.log("Item added to cart:", res);
                 setIncart(true);
+            }else if(res.status===401){
+                console.log("Login to proceed");
             } else {
                 console.warn("Failed to add item:", res.message || res);
                 alert("Failed to add item to cart");
