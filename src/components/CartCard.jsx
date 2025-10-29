@@ -17,7 +17,7 @@ const CartCard = (props) => {
             <div className={`container ${styles.mainCard}`}>
                 <div className={`row ${styles.rowStyle}`}>
                     <div className={`col-md-6 d-flex justify-content-center align-items-center ${styles.imageWrapper}`}>
-                        <img src={`${image}`} height="250px" />
+                        <img loading="lazy" src={`${image}`} height="250px" />
                     </div>
                     <div className="col-md-6 d-flex flex-column align-items-center justify-content-center">
                         <h4 className="text-white">{name}</h4>

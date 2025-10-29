@@ -30,7 +30,7 @@ const ProductCard = (props) => {
     return (
         <div className={`container ${styles.cardStyle} d-flex flex-column justify-content-between align-items-center`}>
             <div className={`${styles.imageStyle} d-flex justify-content-center align-items-center`}>
-                <img src={`${image[0]?.url}` || altImage} height="250px" alt={name || slug || 'Product'} />
+                <img loading="lazy" src={`${image[0]?.url}` || altImage} height="250px" alt={name || slug || 'Product'} />
             </div>
             <h2 className="text-white mt-2">{slug}</h2>
             <p className="text-white">Rs. {price}</p>
